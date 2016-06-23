@@ -1424,7 +1424,7 @@
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar React = __webpack_require__(8);\n\nvar Countdown = React.createClass({\n  displayName: 'Countdown',\n\n  render: function render() {\n    return React.createElement(\n      'div',\n      null,\n      React.createElement(\n        'p',\n        null,\n        'Countdown.jsx'\n      )\n    );\n  }\n});\n\nmodule.exports = Countdown;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Countdown.jsx\n ** module id = 230\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Countdown.jsx?");
+	eval("'use strict';\n\nvar React = __webpack_require__(8);\nvar Clock = __webpack_require__(237);\n\nvar Countdown = React.createClass({\n  displayName: 'Countdown',\n\n  render: function render() {\n    return React.createElement(\n      'div',\n      null,\n      React.createElement(Clock, { totalSeconds: 129 })\n    );\n  }\n});\n\nmodule.exports = Countdown;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Countdown.jsx\n ** module id = 230\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Countdown.jsx?");
 
 /***/ },
 /* 231 */
@@ -1460,7 +1460,13 @@
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("exports = module.exports = __webpack_require__(233)();\n// imports\n\n\n// module\nexports.push([module.id, \".top-bar,\\n.top-bar ul {\\n  background-color: #333333; }\\n\\n.top-bar .menu-text {\\n  color: white; }\\n\\n.top-bar .menu > .menu-text > a {\\n  display: inline;\\n  padding: 0; }\\n\\n.top-bar .active-link {\\n  font-weight: bold; }\\n\", \"\"]);\n\n// exports\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/css-loader!./~/sass-loader!./app/styles/app.scss\n ** module id = 236\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/styles/app.scss?./~/css-loader!./~/sass-loader");
+	eval("exports = module.exports = __webpack_require__(233)();\n// imports\n\n\n// module\nexports.push([module.id, \".top-bar,\\n.top-bar ul {\\n  background-color: #333333; }\\n\\n.top-bar .menu-text {\\n  color: white; }\\n\\n.top-bar .menu > .menu-text > a {\\n  display: inline;\\n  padding: 0; }\\n\\n.top-bar .active-link {\\n  font-weight: bold; }\\n\\n.clock {\\n  align-items: center;\\n  background-color: #B5D0E2;\\n  border: 2px solid #2099E8;\\n  border-radius: 50%;\\n  display: flex;\\n  height: 14rem;\\n  justify-content: center;\\n  margin: 4rem auto;\\n  width: 14rem; }\\n\\n.clock-text {\\n  color: white;\\n  font-size: 2.25rem;\\n  font-color: white; }\\n\", \"\"]);\n\n// exports\n\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/css-loader!./~/sass-loader!./app/styles/app.scss\n ** module id = 236\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/styles/app.scss?./~/css-loader!./~/sass-loader");
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nvar React = __webpack_require__(8);\n\nvar Clock = React.createClass({\n  displayName: 'Clock',\n\n  getDefaultProps: function getDefaultProps() {\n    totalsSeconds: 0;\n  },\n  propTypes: {\n    totalSeconds: React.PropTypes.number\n  },\n  formatSeconds: function formatSeconds(totalSeconds) {\n    var seconds = totalSeconds % 60;\n    var minutes = Math.floor(totalSeconds / 60);\n    if (seconds < 10) {\n      seconds = '0' + seconds;\n    }\n    if (minutes < 10) {\n      minutes = '0' + minutes;\n    }\n    return minutes + ':' + seconds;\n  },\n  render: function render() {\n    var totalSeconds = this.props.totalSeconds;\n\n    return React.createElement(\n      'div',\n      { className: 'clock' },\n      React.createElement(\n        'span',\n        { className: 'clock-text' },\n        this.formatSeconds(totalSeconds)\n      )\n    );\n  }\n});\n\nmodule.exports = Clock;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Clock.jsx\n ** module id = 237\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Clock.jsx?");
 
 /***/ }
 /******/ ]);
