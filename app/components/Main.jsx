@@ -7,10 +7,13 @@ var Main = (props) => {
     return (
         <div>
       <Navigation />
-                <div className="row">
+      <div className="row">
+      <div className="column small-centered medium-6 large-4">
+
                   <p> Main JSX Rendered </p>
                     {props.children}
                 </div>
+              </div>
               </div>
 
     );

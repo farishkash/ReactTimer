@@ -1406,7 +1406,7 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar React = __webpack_require__(8);\nvar Navigation = __webpack_require__(228);\nvar Timer = __webpack_require__(229);\nvar Countdown = __webpack_require__(230);\n\nvar Main = function Main(props) {\n    return React.createElement(\n        'div',\n        null,\n        React.createElement(Navigation, null),\n        React.createElement(\n            'div',\n            { className: 'row' },\n            React.createElement(\n                'p',\n                null,\n                ' Main JSX Rendered '\n            ),\n            props.children\n        )\n    );\n};\n\nmodule.exports = Main;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Main.jsx\n ** module id = 227\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Main.jsx?");
+	eval("'use strict';\n\nvar React = __webpack_require__(8);\nvar Navigation = __webpack_require__(228);\nvar Timer = __webpack_require__(229);\nvar Countdown = __webpack_require__(230);\n\nvar Main = function Main(props) {\n    return React.createElement(\n        'div',\n        null,\n        React.createElement(Navigation, null),\n        React.createElement(\n            'div',\n            { className: 'row' },\n            React.createElement(\n                'div',\n                { className: 'column small-centered medium-6 large-4' },\n                React.createElement(\n                    'p',\n                    null,\n                    ' Main JSX Rendered '\n                ),\n                props.children\n            )\n        )\n    );\n};\n\nmodule.exports = Main;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Main.jsx\n ** module id = 227\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Main.jsx?");
 
 /***/ },
 /* 228 */
@@ -1424,7 +1424,7 @@
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar React = __webpack_require__(8);\nvar Clock = __webpack_require__(237);\n\nvar Countdown = React.createClass({\n  displayName: 'Countdown',\n\n  render: function render() {\n    return React.createElement(\n      'div',\n      null,\n      React.createElement(Clock, { totalSeconds: 129 })\n    );\n  }\n});\n\nmodule.exports = Countdown;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Countdown.jsx\n ** module id = 230\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Countdown.jsx?");
+	eval("'use strict';\n\nvar React = __webpack_require__(8);\nvar Clock = __webpack_require__(237);\nvar CountdownForm = __webpack_require__(238);\n\nvar Countdown = React.createClass({\n  displayName: 'Countdown',\n\n\n  getInitialState: function getInitialState() {\n    return { count: 0 };\n  },\n  handleSetCountdown: function handleSetCountdown(seconds) {\n    this.setState({\n      count: seconds\n    });\n  },\n  render: function render() {\n    var count = this.state.count;\n\n    return React.createElement(\n      'div',\n      null,\n      React.createElement(Clock, { totalSeconds: count }),\n      React.createElement(CountdownForm, { onSetCountdown: this.handleSetCountdown })\n    );\n  }\n});\n\nmodule.exports = Countdown;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Countdown.jsx\n ** module id = 230\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Countdown.jsx?");
 
 /***/ },
 /* 231 */
@@ -1467,6 +1467,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	eval("'use strict';\n\nvar React = __webpack_require__(8);\n\nvar Clock = React.createClass({\n  displayName: 'Clock',\n\n  getDefaultProps: function getDefaultProps() {\n    totalsSeconds: 0;\n  },\n  propTypes: {\n    totalSeconds: React.PropTypes.number\n  },\n  formatSeconds: function formatSeconds(totalSeconds) {\n    var seconds = totalSeconds % 60;\n    var minutes = Math.floor(totalSeconds / 60);\n    if (seconds < 10) {\n      seconds = '0' + seconds;\n    }\n    if (minutes < 10) {\n      minutes = '0' + minutes;\n    }\n    return minutes + ':' + seconds;\n  },\n  render: function render() {\n    var totalSeconds = this.props.totalSeconds;\n\n    return React.createElement(\n      'div',\n      { className: 'clock' },\n      React.createElement(\n        'span',\n        { className: 'clock-text' },\n        this.formatSeconds(totalSeconds)\n      )\n    );\n  }\n});\n\nmodule.exports = Clock;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/Clock.jsx\n ** module id = 237\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/Clock.jsx?");
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nvar React = __webpack_require__(8);\n\nvar CountdownForm = React.createClass({\n  displayName: 'CountdownForm',\n\n  onSubmit: function onSubmit(e) {\n    e.preventDefault;\n    var strSeconds = this.refs.seconds.value;\n\n    if (strSeconds.match(/^[0-9]*$/)) {\n      this.refs.seconds.value = '';\n      this.props.onSetCountdown(parseInt(strSeconds, 10));\n    }\n  },\n  render: function render() {\n    return React.createElement(\n      'div',\n      null,\n      React.createElement(\n        'form',\n        { ref: 'form', onSubmit: this.onSubmit, className: 'countdown-form' },\n        React.createElement('input', { type: 'text', ref: 'seconds', placeholder: 'Enter Time in Seconds' }),\n        React.createElement(\n          'button',\n          { className: 'button expanded' },\n          'Start'\n        )\n      )\n    );\n  }\n});\n\nmodule.exports = CountdownForm;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./app/components/CountdownForm.jsx\n ** module id = 238\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./app/components/CountdownForm.jsx?");
 
 /***/ }
 /******/ ]);
